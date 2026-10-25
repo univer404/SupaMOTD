@@ -1,0 +1,15 @@
+name: SupaMOTD
+version: 1.0.0
+main: com.supamotd.SupaMOTD
+api-version: '1.21'
+description: Configurable server-list MOTD and maximum player count.
+author: univer404
+commands:
+  motd:
+    description: Reload SupaMOTD configuration.
+    usage: /motd reload
+    permission: motd.use
+permissions:
+  motd.use:
+    description: Allows reloading the SupaMOTD configuration.
+    default: op
