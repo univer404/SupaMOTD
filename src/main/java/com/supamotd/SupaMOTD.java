@@ -17,6 +17,7 @@ public final class SupaMOTD extends JavaPlugin implements Listener {
     private static final MiniMessage MINI_MESSAGE = MiniMessage.miniMessage();
     private static final LegacyComponentSerializer LEGACY =
             LegacyComponentSerializer.builder().character('&').hexColors().useUnusualXRepeatedCharacterHexFormat().build();
+    private static final Pattern SKRIPT_HEX = Pattern.compile("(?i)<##([0-9a-f]{6})>");
     private static final Pattern AMPERSAND_HEX = Pattern.compile("(?i)&#([0-9a-f]{6})");
     private static final Pattern AMPERSAND_CODE = Pattern.compile("(?i)&([0-9a-fk-or])");
 
@@ -56,6 +57,17 @@ public final class SupaMOTD extends JavaPlugin implements Listener {
 
     private Component parseText(String input) {
         String converted = input.replace("\\n", "\n");
+
+        // Skript uses <##RRGGBB>, while MiniMessage expects <#RRGGBB>.
+        Matcher skriptHexMatcher = SKRIPT_HEX.matcher(converted);
+        StringBuffer skriptHexBuffer = new StringBuffer();
+        while (skriptHexMatcher.find()) {
+            skriptHexMatcher.appendReplacement(skriptHexBuffer, "<#" + skriptHexMatcher.group(1) + ">");
+        }
+        skriptHexMatcher.appendTail(skriptHexBuffer);
+        converted = skriptHexBuffer.toString();
+
+        // Also support legacy &#RRGGBB hex colors.
         Matcher hexMatcher = AMPERSAND_HEX.matcher(converted);
         StringBuffer hexBuffer = new StringBuffer();
         while (hexMatcher.find()) {
