@@ -1,0 +1,7 @@
+# SupaMOTD configuration
+# Supports MiniMessage hex colors such as <##007dfc>, gradients, and legacy & color codes.
+# Use \n in a line to insert a line break; the two configured lines below appear on separate lines.
+motd:
+  line-1: "<##007dfc><bold>E<##0087fc><bold>x<##0091fc><bold>a<##009afc><bold>m<##00a4fc><bold>p<##00aefc><bold>l<##00b8fc><bold>e<##00c1fc><bold>S<##00cbfc><bold>M<##00d5fc><bold>P<##00dffc><bold>.<##00e8fc><bold>n<##00f2fc><bold>e<##00fcfc><bold>t"
+  line-2: "<##10E336>               ꜱᴜʀᴠɪᴠᴀʟ ᴍᴜʟᴛɪᴘʟᴀʏᴇʀ"
+max-player-count: 3000
