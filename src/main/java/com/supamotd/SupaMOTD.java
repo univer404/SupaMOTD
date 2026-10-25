@@ -75,7 +75,7 @@ public final class SupaMOTD extends JavaPlugin implements Listener {
                 case '6' -> "<gold>"; case '7' -> "<gray>"; case '8' -> "<dark_gray>";
                 case '9' -> "<blue>"; case 'a' -> "<green>"; case 'b' -> "<aqua>";
                 case 'c' -> "<red>"; case 'd' -> "<light_purple>"; case 'e' -> "<yellow>";
-                case 'f' -> "<white>"; case 'k' -> "< obfuscated>"; case 'l' -> "<bold>";
+                case 'f' -> "<white>"; case 'k' -> "<obfuscated>"; case 'l' -> "<bold>";
                 case 'm' -> "<strikethrough>"; case 'n' -> "<underlined>"; case 'o' -> "<italic>";
                 case 'r' -> "<reset>"; default -> codeMatcher.group();
             });
