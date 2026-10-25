@@ -32,8 +32,11 @@ public final class SupaMOTD extends JavaPlugin implements Listener {
     public void onServerListPing(ServerListPingEvent event) {
         String firstLine = getConfig().getString("motd.line-1", "<green>Welcome");
         String secondLine = getConfig().getString("motd.line-2", "<gray>Have fun!");
-        String motd = firstLine + "\n" + secondLine;
-        event.motd(parseText(motd));
+        // Parse each line independently so formatting on line 1 cannot leak into line 2.
+        Component motd = parseText(firstLine)
+                .append(Component.newline())
+                .append(parseText(secondLine));
+        event.motd(motd);
         event.setMaxPlayers(Math.max(0, getConfig().getInt("max-player-count", 3000)));
     }
 
